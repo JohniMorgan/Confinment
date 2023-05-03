@@ -83,7 +83,7 @@ import CheckCard from './CheckCard.vue';
             }
             else if (this.thisNode.status == 'check') {
                 let node = this.graph.nodes.find(n => n.status == 'active');
-                this.thisNode.status = "passed";
+                this.thisNode.status = "passed";  
                 this.$router.push('/' + node.id);
             }         
             }

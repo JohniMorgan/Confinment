@@ -1,6 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-//import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 import Graph from './components/Graph.vue'
 </script>
 
@@ -9,8 +8,8 @@ import Graph from './components/Graph.vue'
     <div class="wrapper">
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <!--<RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>-->
       </nav>
       <Graph :key="$route.params.id"/>
     </div>

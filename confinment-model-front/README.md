@@ -13,6 +13,10 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 ## Project Setup
 
 ```sh
+cd ./confinment-model-front
+```
+
+```sh
 npm install
 ```
 

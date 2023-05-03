@@ -2,10 +2,13 @@
     <div class="item" :style="getBackColor">
         <label>Проверка №{{ number+1 }}</label>
         <div class="dropdown">
-        <button v-if="isValid == false" class="btn">Изменить</button>
-        <div class="dropdown-content">
-            <RouterLink :to="'/node' + fmean[0]">{{ fmean }}</RouterLink>
-        </div>
+            <div>
+            <button v-if="isValid == false" class="btn">Изменить</button>
+                <div class="dropdown-content">
+                    <RouterLink :to="'/node' + fmean[0]">{{ fmean }}</RouterLink>
+                    <RouterLink :to="'/node' + smean[0]">{{ smean }}</RouterLink>
+                </div>
+            </div>
         </div>
         <div>
         <label><span>{{ fmean }} </span>
@@ -127,23 +130,26 @@ import { useGraph } from '../stores/graph';
         display: inline-block;
     }
 .dropdown-content {
+    opacity: 0;
   display: none;
   position: absolute;
-  background-color: #000;
+  background-color: #873535;
   min-width: 300px;
   z-index: 1;
+  transition: 0.5s;
 }
 
-.dropdown-content RouterLink {
-  color: #ccc;
+.dropdown-content a {
+  color: #fff;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content RouterLink:hover {background-color: #2c2a2a}
+.dropdown-content a:hover {background-color: #e10707}
 
 .dropdown:hover .dropdown-content {
+    opacity: 1;
   display: block;
 }
 

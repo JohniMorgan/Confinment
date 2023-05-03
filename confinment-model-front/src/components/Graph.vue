@@ -53,6 +53,20 @@ export default {
         .attr('id', d => d.id)
         .attr('fill', d => this.gr.getNodeColor(d.id))
 
+    svg.append('g')
+    .selectAll('text')
+    .data(this.gr.nodes)
+    .enter()
+    .append("text")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y + 5)
+      .text(d => d.label)
+      .style("text-anchor", "middle")
+      .style("font-size", "20px")
+      .style("fill", "#000")
+      .style('cursor', 'pointer')
+      .on('click', (event, d) => this.routing(event, d));
+
     const group = svg.append('g')
     .selectAll('g')
     .data(this.gr.nodes)
@@ -82,20 +96,17 @@ export default {
     .style('stroke-linejoin', 'round')
     .style('stroke-width', '2');
     group.on('click', event => this.goToThisCheck(event))
+    const tooltip = group.append('g').classed('tooltip', true);
+    tooltip
+    .append('rect')
+    .attr('width', '215')
+    .attr('height', '20')
+    .style('display', 'block')
+    tooltip.append('text')
+    .text('появились новые вопросы для проверки')
+    //.style('fill', '#d2d822')
         
-    svg.append('g')
-    .selectAll('text')
-    .data(this.gr.nodes)
-    .enter()
-    .append("text")
-      .attr("x", d => d.x)
-      .attr("y", d => d.y + 5)
-      .text(d => d.label)
-      .style("text-anchor", "middle")
-      .style("font-size", "20px")
-      .style("fill", "#000")
-      .style('cursor', 'pointer')
-      .on('click', (event, d) => this.routing(event, d));
+    
 
 
     svg.append('defs').append('marker')
@@ -156,4 +167,28 @@ export default {
     text.selectable {
         cursor: pointer;
     }
+    .tooltip {
+      opacity: 0;
+      display: none;
+      transition: 0.5s;
+    }
+    .tooltip rect {
+      fill: #d2d822;
+      color: #fff;
+      position: absolute;
+      transform: translateY(-20px) translateX(20px);
+      transition: 1s;
+    }
+    g:hover > .tooltip{
+      display: block;
+      opacity: 1;
+    }
+    .tooltip text{
+
+      font-family:Arial, Helvetica, sans-serif;
+      transform: translateY(-8px) translateX(22px);
+      font-size: 11px;
+      fill: #000;
+    }
+
 </style>
